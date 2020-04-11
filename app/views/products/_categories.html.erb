@@ -1,0 +1,22 @@
+<div class="row sticky-top bg-white py-2 rounded">
+  <div class="col-10 pt-1 ">
+    <div class="d-flex justify-content-start flex-wrap">
+      <%= link_to "All", products_path, class: "text-secondary mr-4" %>
+      <% @categories.each do |cat| %>
+        <%= link_to cat.name, products_path(cat: cat.id), class: "text-secondary mr-4 " %>
+      <% end %>
+    </div>
+  </div>
+
+ 
+  <div class="col-2  border-left">
+    <div class="d-flex justify-content-center">
+      <div class="btn btn-outline-secondary btn-sm shadow">
+        Cart <span class="badge badge-dark">9</span>
+        <span class="sr-only">unread messages</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
