@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @categories = Category.all
     cat = params[:cat]
     if cat.nil?
       @products = Product.all
@@ -13,10 +12,11 @@ class ProductsController < ApplicationController
       @products = Product.where(category_id: cat)
     end
   end
-
+  
   # GET /products/1
   # GET /products/1.json
   def show
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/new
@@ -70,6 +70,8 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+
     def set_product
       @product = Product.find(params[:id])
     end

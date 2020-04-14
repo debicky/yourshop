@@ -14,13 +14,13 @@ User.create!(email: "admin@admin.pl",
 
 5.times do |i| 
   category = Category.new
-  category.name = Faker::Lorem.sentence(word_count: 1)
+  category.name = Faker::Commerce.unique.department(max: 1)
   category.save
 end
 
 20.times do |i| 
   product = Product.new
-  product.title = Faker::Lorem.sentence(word_count: 2)
+  product.title = Faker::Commerce.unique.product_name
   product.body = Faker::Lorem.paragraph_by_chars(number: 10)
   product.img.attach(io: open('https://picsum.photos/300/300'), filename: "#{i}image_url.jpg")
   product.price = Faker::Number.decimal(l_digits: 2) 
