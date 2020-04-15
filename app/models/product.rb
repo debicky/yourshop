@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   private
 
   def ensure_noone_is_buying
-    unless order_item.empty?
+    unless order_items.empty?
       errors.add(:base, "Cart contains this item")
       throw :abort
     end

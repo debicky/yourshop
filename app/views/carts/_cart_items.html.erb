@@ -1,14 +1,37 @@
+
+
+<div class="table-responsive ">
+<table class="table table-hover table-borderless ">
+  <caption class="h3 text-dark">Total: <span class="font-weight-bold ">$<%= current_order.subtotal %></span></caption>
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Color</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @order_items.each do |item| %>
-  <h3><%= item.product.title %></h3>
-  <h3><%= item.product.price %></h3>
-  <%= form_with model: item do |f| %>
-    <%= f.hidden_field :product_id, value: item.product.id %>
-    <%= f.number_field :quantity, value: item.quantity.to_i %>
-    <%= f.submit "Update Cart" %>
-    <%= link_to "Remove Items", item, method: :delete, remote: true %>
-  <% end %>
-  <h2>Subtotal: <%= item.total %></h2>
-  <% end %>
+    <tr> 
+      <td><%= image_tag item.product.img, class: "cart-img rounded" %> <%= item.product.title %></td>
+      <td><%= item.product.price %>$</td>
+      <td>COLOR</td>
+      <td><%= item.total %>$</td>
+      <td><%= item.quantity.to_i %></td>
+      <td>
+        <%= form_with model: item do |f| %>
+          <%= f.hidden_field :product_id, value: item.product.id %>
+          <%= f.number_field :quantity, value: item.quantity.to_i, min: 1, max: 5, class: "form-control-sm" %>
+          <%= f.submit "Update", class: "btn btn-primary btn-sm" %>
+          <%= link_to "Remove", item, method: :delete, remote: true, class: "btn btn-danger btn-sm"  %>
+        <% end %>
+      </td>
+    </tr>
 
-
-  <h3>You total price is <%= current_order.subtotal %></h3>
+  <% end %>
+  </tbody>
+</table>
+</div>

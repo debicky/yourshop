@@ -1,0 +1,25 @@
+<% @order_items.each do |item| %>
+
+    <div class="row my-5 ">
+      <div class="col-4">
+        <%= image_tag item.product.img, class: "cart-img rounded" %> 
+      </div>
+      <div class="col-8">
+          <h5 class=""><%= item.product.title %></h5>
+          <p class="">Price: <%= item.product.price %>$</p>
+          <p class="">Quantity: <%= item.quantity %></p>
+          <p class="">Total: <%= item.total %>$</p>
+          <p class=""><small class="text-muted">Last updated 3 mins ago</small></p>
+
+        <%= form_with model: item do |f| %>
+          <%= f.hidden_field :product_id, value: item.product.id %>
+          <%= f.number_field :quantity, value: item.quantity.to_i, min: 1, max: 5, class: "form-control-sm" %>
+          <%= f.submit "Update", class: "btn btn-primary btn-sm" %>
+          <%= link_to "Remove", item, method: :delete, remote: true, class: "btn btn-danger btn-sm"  %>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+
+

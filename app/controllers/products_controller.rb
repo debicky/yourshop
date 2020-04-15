@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     cat = params[:cat]
     if cat.nil?
-      @products = Product.all
+      @products = Product.all.order("created_at DESC")
     else
       @products = Product.where(category_id: cat)
     end
@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to @product, notice: 'If you see a product page, that means somebody has it in a cart!' }
       format.json { head :no_content }
     end
   end
