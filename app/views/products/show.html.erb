@@ -1,6 +1,6 @@
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 d-flex justify-content-center">
     <% if @product.img.attached? %>
         <%= image_tag @product.img, class: "img-fluid rounded" %>
     <% end %>
@@ -17,8 +17,9 @@
     <hr>
     <%= form_with model: @order_item do |f| %>
       <%= f.hidden_field :product_id, value: @product.id %>
-      <%= f.number_field :quantity, value: 1, min: 1, max: 5, class: "form-control" %>
-      <%= f.submit "Add to cart", class: "btn btn-outline-dark my-3" %>
+      <%= f.select :quantity, options_for_select(1..5), {},  {class: "form-control"} %>
+      <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :size, @order_item.size_id), {}, {class: "form-control my-2"} %>
+      <%= f.submit "Add to cart", class: "btn btn-outline-dark btn-block" %>
     <% end %>
 
 

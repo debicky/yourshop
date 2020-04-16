@@ -1,32 +1,38 @@
+  <div class="d-flex justify-content-center text-uppercase flex-wrap py-3">
+  <h4>Your cart</h4>
+  </div>
 
-
-<div class="table-responsive ">
+<div class="table-responsive   ">
 <table class="table table-hover table-borderless ">
   <caption class="h3 text-dark">Total: <span class="font-weight-bold ">$<%= current_order.subtotal %></span></caption>
   <thead>
-    <tr>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Color</th>
+    <tr class="border-bottom  ">
+      <th scope="col" >Product</th>
+      <th scope="col" >Price</th>
       <th scope="col">Subtotal</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Options</th>
+      <th scope="col" class="text-center" >Qty&Size</th>
     </tr>
   </thead>
   <tbody>
 <% @order_items.each do |item| %>
-    <tr> 
-      <td><%= image_tag item.product.img, class: "cart-img rounded" %> <%= item.product.title %></td>
+    <tr class=""> 
+      <td class="p-1">
+      <div class="form-inline">
+      <%= image_tag item.product.img, class: "cart-img rounded d-none d-sm-block mr-1" %>
+      <%= item.product.title %>
+      </div>
+      </td>
+
+
       <td><%= item.product.price %>$</td>
-      <td>COLOR</td>
       <td><%= item.total %>$</td>
-      <td><%= item.quantity.to_i %></td>
-      <td>
+      <td class="form-inline p-2 justify-content-center">
         <%= form_with model: item do |f| %>
           <%= f.hidden_field :product_id, value: item.product.id %>
-          <%= f.number_field :quantity, value: item.quantity.to_i, min: 1, max: 5, class: "form-control-sm" %>
-          <%= f.submit "Update", class: "btn btn-primary btn-sm" %>
-          <%= link_to "Remove", item, method: :delete, remote: true, class: "btn btn-danger btn-sm"  %>
+          <%= f.select :quantity, options_for_select(1..5, item.quantity), {},  {class: "form-control "} %>
+          <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :size, item.size_id), {}, {class: "form-control"} %>
+          <%= f.submit "Update", class: "btn btn-outline-primary " %>
+          <%= link_to "Remove", item, method: :delete, remote: true, class: "btn btn-outline-danger "  %>
         <% end %>
       </td>
     </tr>

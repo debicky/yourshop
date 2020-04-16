@@ -21,7 +21,7 @@ end
 20.times do |i| 
   product = Product.new
   product.title = Faker::Commerce.unique.product_name
-  product.body = Faker::Lorem.paragraph_by_chars(number: 10)
+  product.body = Faker::Lorem.paragraph_by_chars(number: 100)
   product.img.attach(io: open('https://picsum.photos/300/300'), filename: "#{i}image_url.jpg")
   product.price = Faker::Number.decimal(l_digits: 2) 
   product.category_id = Faker::Number.between(from: 1, to: 5)
