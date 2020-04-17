@@ -1,16 +1,10 @@
-<% if current_order.order_items.size > 0 %>
-<div id="cart-item">
-  <%= render 'cart_items' %>
-</div>
-
-
-<hr>
-<h3>checkout.....</h3>
-
-
-<% else %>
-  <div class="d-flex justify-content-center text-uppercase flex-wrap py-5">
-  <h4>YOUR DON'T HAVE ANY ITEMS IN YOUR CART. <%= link_to "START SHOPPING »", root_path, class: "text-dark font-weight-bold" %></h4>
+<% if current_order.order_items.any? %>
+  <div id="cart-item">
+    <%= render 'cart_items' %>
   </div>
-
+<% else %>
+  <div id="cart-empty">
+    <%= render 'cart_empty' %>
+  </div>
 <% end %>
+

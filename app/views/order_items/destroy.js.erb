@@ -1,2 +1,6 @@
 $("#cart").html("<%= j render 'carts/cart' %>");
-$("#cart-item").html("<%= j render 'carts/cart_items' %>");
+<% if current_order.order_items.any? %>
+  $("#cart-item").html("<%= j render 'carts/cart_items' %>");
+<% else %>
+  $("#cart-item").html("<%= j render 'carts/cart_empty' %>");
+<% end %>
