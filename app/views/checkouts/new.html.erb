@@ -1,5 +1,5 @@
 <div class="row my-2 d-flex">
-  <div class="col-md-6 my-4 order-md-2 ">
+  <div class="col-md-6 my-4 order-md-2 border-bottom">
     <% @order_items.each do |item| %>
         <div class="card mb-1">
           <div class="row no-gutters ">
@@ -30,13 +30,15 @@
     <hr>
       <div class="d-flex justify-content-between">
         <h3>Total </h3>
-        <h3 class="font-weight-bold ">$<%= current_order.subtotal + 8 %></span>
+        <h3 class="font-weight-bold pb-2 ">$<%= current_order.subtotal + 8 %></span>
       </div>
   </div>
 
-  <div class="col-md-6 bg-light rounded my-4">
+  <div class="col-md-6 bg-light rounded my-4 border-right border-bottom">
     <h2 class="text-center">Enter your details.</h2>
     <%= render 'form', checkout: @checkout %>
+    <%= link_to "Return to cart", your_cart_path, class: "btn btn-outline-secondary btn-sm my-2" %>
   </div>
+
 </div>
 
