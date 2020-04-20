@@ -1,6 +1,8 @@
 class CheckoutsController < ApplicationController
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
   before_action :ensure_cart_isnt_empty, only: [:new]
+  before_action :check_admin, except: [:new]
+
 
   # GET /checkouts
   # GET /checkouts.json
@@ -16,6 +18,7 @@ class CheckoutsController < ApplicationController
   # GET /checkouts/new
   def new
     @checkout = Checkout.new
+    @order_items = current_order.order_items
   end
 
   # GET /checkouts/1/edit
@@ -26,10 +29,13 @@ class CheckoutsController < ApplicationController
   # POST /checkouts.json
   def create
     @checkout = Checkout.new(checkout_params)
+    @checkout.add_order_items_from_cart.current_order
 
     respond_to do |format|
       if @checkout.save
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully created.' }
+        Order.destroy(session[:order_id])
+        session[:order_id] = nil
+        format.html { redirect_to @checkout, notice: 'Thanks for you order!' }
         format.json { render :show, status: :created, location: @checkout }
       else
         format.html { render :new }

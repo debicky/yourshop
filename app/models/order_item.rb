@@ -4,6 +4,7 @@ class OrderItem < ApplicationRecord
   belongs_to :size
   before_save :set_unit_price
   before_save :set_total
+  belongs_to :checkout, optional: true
 
 
   def unit_price
