@@ -1,4 +1,4 @@
-<%= link_to carts_path, class: "btn btn-outline-secondary btn-sm shadow" do %>
+<%= link_to your_cart_path, class: "btn btn-outline-secondary btn-sm shadow" do %>
   Cart
   <span class="badge badge-dark"><%= current_order.order_items.map {|item| item.quantity}.sum %></span>
 <% end %>

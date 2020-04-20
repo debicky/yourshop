@@ -17,5 +17,8 @@ class Product < ApplicationRecord
       throw :abort
     end
   end
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   
 end

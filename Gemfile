@@ -6,6 +6,8 @@ gem "bootstrap_form", "~> 4.0"
 gem 'devise'
 gem 'devise-bootstrap-form'
 gem 'faker'
+gem 'friendly_id', '~> 5.2.4' 
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'

@@ -1,9 +1,9 @@
 <div class="row sticky-top bg-white py-2 rounded">
   <div class="col-10 pt-1 ">
     <div class="d-flex justify-content-start flex-wrap">
-      <%= link_to "All", products_path, class: "text-secondary mr-4" %>
-      <% @categories.each do |cat| %>
-        <%= link_to cat.name, products_path(cat: cat.id), class: "text-secondary mr-4 " %>
+      <%= link_to "All", root_path, class: "text-secondary mr-4 #{'text-warning' if current_page?(root_path)}" %>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, products_path(category: category.id), class: "text-secondary mr-4 #{'text-warning' if current_page?(products_path(category: category.id))}" %>
       <% end %>
     </div>
   </div>
@@ -18,4 +18,5 @@
   </div>
 
 </div>
+
 

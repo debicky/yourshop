@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    cat = params[:cat]
-    if cat.nil?
-      @products = Product.order("created_at ASC")
+    category = params[:category]
+    if category.nil?
+      @products = Product.order("created_at DESC")
     else
-      @products = Product.where(category_id: cat)
+      @products = Product.where(category_id: category)
     end
   end
   
@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
 
 
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
