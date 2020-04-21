@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_one_attached :img
   before_destroy :ensure_noone_is_buying
+  has_many :checkouts, through: :order_items
 
 
 

@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>email</th>
       <th>First name</th>
       <th>Last name</th>
       <th>Address</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @checkouts.each do |checkout| %>
       <tr>
+        <td><%= checkout.email %></td>
         <td><%= checkout.first_name %></td>
         <td><%= checkout.last_name %></td>
         <td><%= checkout.address %></td>

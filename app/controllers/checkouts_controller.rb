@@ -80,7 +80,7 @@ class CheckoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkout_params
-      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :pay_type)
+      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :pay_type, :email)
     end
 
     def ensure_cart_isnt_empty
