@@ -1,44 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-6">
+    <p>
+      <strong>First name:</strong>
+      <%= @checkout.first_name %>
+    </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @checkout.first_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @checkout.last_name %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @checkout.last_name %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @checkout.address %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @checkout.address %>
-</p>
+    <p>
+      <strong>City:</strong>
+      <%= @checkout.city %>
+    </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @checkout.city %>
-</p>
+    <p>
+      <strong>Country:</strong>
+      <%= @checkout.country %>
+    </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @checkout.country %>
-</p>
+    <p>
+      <strong>Postal code:</strong>
+      <%= @checkout.postal_code %>
+    </p>
 
-<p>
-  <strong>Postal code:</strong>
-  <%= @checkout.postal_code %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @checkout.phone %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @checkout.phone %>
-</p>
+    <p>
+      <strong>Pay type:</strong>
+      <%= @checkout.pay_type %>
+    </p>
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @checkout.pay_type %>
-</p>
+    <%= link_to 'Edit', edit_checkout_path(@checkout) %> |
+    <%= link_to 'Back', checkouts_path %>
+  </div>
+  <div class="col-6">
+    <% @checkout.order_items.each do |x| %>
+    <%= x.quantity %> x
+    <%= x.product.title %> | size:
+    <%= x.size.size %> |
+    <%= x.total %> $
+    <hr>
+    <% end %>
+    Total order value: <%= @checkout.order_items.collect {|order_item| order_item.total}.sum %> $
+  </div>
 
-<%= link_to 'Edit', edit_checkout_path(@checkout) %> |
-<%= link_to 'Back', checkouts_path %>
+</div>
