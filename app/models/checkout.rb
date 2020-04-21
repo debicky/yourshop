@@ -1,7 +1,7 @@
 class Checkout < ApplicationRecord
-  validates :first_name, :last_name, :address, :pay_type, :city, :country, :postal_code , presence: true
+  validates :first_name, :last_name, :address, :pay_type, :city, :country, :postal_code, presence: true
   has_many :order_items, dependent: :destroy
-
+  
 
 
   enum pay_type: {

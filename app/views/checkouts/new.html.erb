@@ -1,5 +1,6 @@
-<div class="row my-2 d-flex">
-  <div class="col-md-6 my-4 order-md-2 border-bottom">
+
+<div class="row  d-flex">
+  <div class="col-md-6  order-md-2 border-bottom mt-4">
     <% @order_items.each do |item| %>
         <div class="card mb-1">
           <div class="row no-gutters ">
@@ -34,11 +35,35 @@
       </div>
   </div>
 
-  <div class="col-md-6 bg-light rounded my-4 border-right border-bottom">
-    <h2 class="text-center">Enter your details.</h2>
+  <div class="col-md-6 bg-light rounded  border-right border-bottom">
+    <h2 class="font-weight-bold mt-5">YourShop.</h2>
+    <h3 class="text-center">Enter your details.</h3>
     <%= render 'form', checkout: @checkout %>
-    <%= link_to "Return to cart", your_cart_path, class: "btn btn-outline-secondary btn-sm my-2" %>
-  </div>
+    <%= link_to "Back to cart", your_cart_path, class: "btn btn-outline-secondary btn-sm my-3 ml-2" %>
+    <div class="btn btn-outline-primary btn-sm ml-auto mr-2" data-toggle="modal" data-target="#exampleModal">
+      Return policy
+    </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Refund policy</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo facilis eos, quidem, at cupiditate consequuntur laboriosam necessitatibus optio aut accusamus omnis vitae unde, harum non laudantium molestias dolorum excepturi aliquid?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+        </div>
+    
+  </div>  
 
 </div>
 

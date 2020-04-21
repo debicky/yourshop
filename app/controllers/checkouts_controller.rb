@@ -1,7 +1,8 @@
 class CheckoutsController < ApplicationController
+  before_action :set_order_items, only: [:new, :create]
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_cart_isnt_empty, only: [:new]
-  before_action :check_admin, except: [:new]
+  before_action :ensure_cart_isnt_empty, only: [:create, :new]
+  before_action :check_admin, except: [:new, :create]
 
 
   # GET /checkouts
@@ -18,7 +19,6 @@ class CheckoutsController < ApplicationController
   # GET /checkouts/new
   def new
     @checkout = Checkout.new
-    @order_items = current_order.order_items
   end
 
   # GET /checkouts/1/edit
@@ -29,13 +29,12 @@ class CheckoutsController < ApplicationController
   # POST /checkouts.json
   def create
     @checkout = Checkout.new(checkout_params)
-    @checkout.add_order_items_from_cart.current_order
-
+    @checkout.add_order_items_from_cart(current_order)
     respond_to do |format|
       if @checkout.save
         Order.destroy(session[:order_id])
         session[:order_id] = nil
-        format.html { redirect_to @checkout, notice: 'Thanks for you order!' }
+        format.html { redirect_to root_path, notice: 'Thanks for you order!' }
         format.json { render :show, status: :created, location: @checkout }
       else
         format.html { render :new }
@@ -72,6 +71,11 @@ class CheckoutsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout
       @checkout = Checkout.find(params[:id])
+
+    end
+    def set_order_items
+      @order_items = current_order.order_items
+
     end
 
     # Only allow a list of trusted parameters through.

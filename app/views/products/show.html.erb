@@ -1,11 +1,11 @@
 
 <div class="row">
-  <div class="col-md-6 d-flex justify-content-center">
+  <div class="col-md-6 d-flex justify-content-center ">
     <% if @product.img.attached? %>
-        <%= image_tag @product.img, class: "img-fluid rounded" %>
+        <%= image_tag @product.img, class: "img-fluid rounded mb-2" %>
     <% end %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 border-left">
     <h2 class="text-uppercase"><%= @product.title %></h2>
     <h3 class= "font-weight-bold"><%= @product.price %>$</h3>
     <p>

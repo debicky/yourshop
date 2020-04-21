@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :checkouts
+  
   resources :sizes
   get 'your-cart', to: 'carts#show'
   resources :order_items
