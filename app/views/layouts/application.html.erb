@@ -11,7 +11,9 @@
 
   <body>
   <div class="container">
-
+  <% if controller_name == "checkouts" && ["new", "create"].include?(action_name) %>
+    <%= yield %>
+  <% else %>
     <%= render 'layouts/navbar' %>
     <%= render 'products/categories' %>
     <div class="border-top my-3 mx-0 py-5 ">
@@ -20,6 +22,6 @@
     </div>
   </div>
     <%= render 'layouts/footer' %>
-
+  <% end %>
   </body>
 </html>
