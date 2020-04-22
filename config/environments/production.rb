@@ -5,13 +5,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "your-shop-debart.herokuapp.com" }
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  user_name: 'debartportfolio',
-  password: ENV['GMAIL_PASSWORD'],
-  authentication: 'plain',
-  enable_starttls_auto: true }
-
+    :address => "smtp.gmail.com",
+    :port    => 587,
+    :domain  => 'your-shop-debart.herokuapp.com',
+    :user_name  => 'debartportfolio@gmail.com',
+    :password  => ENV['GMAIL_PASSWORD'],
+    :authentication  => :login,
+    :enable_starttls_auto => true
+  }
 
 
   config.serve_static_assets = true
