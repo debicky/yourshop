@@ -1,0 +1,13 @@
+<h1>Thanks for your order! </h1>
+
+You bought following items:
+    <% @checkout.order_items.each do |x| %>
+    <%= x.quantity %> x
+    <%= x.product.title %> | size:
+    <%= x.size.size %> |
+    <%= x.total %> $
+    <hr>
+    <% end %>
+
+    Total order value: <%= @checkout.order_items.collect {|order_item| order_item.total}.sum %> $
+

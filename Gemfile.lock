@@ -88,6 +88,10 @@ GEM
       bootstrap_form (>= 4.0.0.alpha1)
       devise (>= 4.6.0)
       rails (>= 5.0.0)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     faker (2.11.0)
       i18n (>= 1.6, < 2)
@@ -236,6 +240,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   devise-bootstrap-form
+  dotenv-rails
   faker
   friendly_id (~> 5.2.4)
   image_processing (~> 1.2)

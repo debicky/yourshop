@@ -34,6 +34,7 @@ class CheckoutsController < ApplicationController
       if @checkout.save
         Order.destroy(session[:order_id])
         session[:order_id] = nil
+        OrderMailer.order_recived(@checkout).deliver_now
         format.html { redirect_to root_path, notice: 'Thanks for you order!' }
         format.json { render :show, status: :created, location: @checkout }
       else
