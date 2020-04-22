@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   host = 'localhost:3000'
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
+  config.action_mailer.default_url_options = { :host => "your-shop-debart.herokuapp.com" }
 
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
