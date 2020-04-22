@@ -9,7 +9,7 @@ Rails.application.configure do
     :port    => 587,
     :domain  => 'your-shop-debart.herokuapp.com',
     :user_name  => 'debartportfolio@gmail.com',
-    :password  => ENV['GMAIL_PASSWORD'],
+    :password  => "dupasraka123!",
     :authentication  => :login,
     :enable_starttls_auto => true
   }
