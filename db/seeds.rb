@@ -11,6 +11,11 @@ User.create!(email: "admin@admin.pl",
               password_confirmation: "password",
               admin: true )
 
+Size.create!(size: "XS")
+Size.create!(size: "S")
+Size.create!(size: "M")
+Size.create!(size: "L")
+Size.create!(size: "XL")
 
 5.times do |i| 
   category = Category.new
