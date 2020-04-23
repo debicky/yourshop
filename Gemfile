@@ -9,7 +9,7 @@ gem 'faker'
 gem 'friendly_id', '~> 5.2.4' 
 gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'figaro'
-gem 'aws-sdk', '~> 3'
+gem "aws-sdk-s3", require: false
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
