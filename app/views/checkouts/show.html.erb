@@ -48,7 +48,7 @@
     <%= x.quantity %> x
     <%= x.product.title %> | size:
     <%= x.size.size %> |
-    <%= x.product.total %> $
+    <%= x.product.price %> $
     <hr>
     <% end %>
     Total order value: <%= @checkout.order_items.collect {|order_item| order_item.total}.sum %> $
