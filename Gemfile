@@ -8,6 +8,9 @@ gem 'devise-bootstrap-form'
 gem 'faker'
 gem 'friendly_id', '~> 5.2.4' 
 gem 'dotenv-rails', groups: [:development, :test, :production]
+gem 'figaro'
+gem 'aws-sdk', '~> 3'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
