@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
+gem 'bootstrap'
 gem "bootstrap_form", "~> 4.0"
 gem 'devise'
 gem 'devise-bootstrap-form'
 gem 'faker'
 gem 'friendly_id', '~> 5.2.4' 
-gem 'dotenv-rails', groups: [:development, :test, :production]
-gem 'figaro'
+gem 'dotenv-rails', groups: [:development, :test]
 gem "aws-sdk-s3", require: false
 gem 'stripe'
 

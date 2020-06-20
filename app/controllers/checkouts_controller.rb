@@ -41,7 +41,7 @@ class CheckoutsController < ApplicationController
       amount: @amount,
       currency: "usd",
       description: @description,
-      source: 'tok_visa'
+      source: params[:stripeToken]
     })
 
     respond_to do |format|
