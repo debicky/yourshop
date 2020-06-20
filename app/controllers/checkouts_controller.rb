@@ -35,13 +35,13 @@ class CheckoutsController < ApplicationController
 
     @checkout = Checkout.new(checkout_params)
     @checkout.add_order_items_from_cart(current_order)   
-
+    token = params[:stripeToken]
 
     charge = Stripe::Charge.create({
+      source: token,
       amount: @amount,
       currency: "usd",
-      description: @description,
-      source: params[:stripeToken]
+      description: @description
     })
 
     respond_to do |format|
@@ -99,7 +99,7 @@ class CheckoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkout_params
-      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :pay_type, :email, :stripeToken)
+      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :email, :stripeToken)
     end
 
     def ensure_cart_isnt_empty

@@ -1,4 +1,3 @@
-
 document.addEventListener("turbolinks:load", function() {
   const public_key = document.querySelector("meta[name='stripe-public-key']").content;
   const stripe = Stripe(public_key);
@@ -37,7 +36,7 @@ document.addEventListener("turbolinks:load", function() {
     });
 
 
-    const form = document.querySelector('.meeting-form');
+    const form = document.querySelector('.payment-form');
       form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
@@ -55,7 +54,7 @@ document.addEventListener("turbolinks:load", function() {
 
       const stripeTokenHandler = (token) => {
       // Insert the token ID into the form so it gets submitted to the server
-      const form = document.querySelector('.meeting-form');
+      const form = document.querySelector('.payment-form');
       const hiddenInput = document.createElement('input');
       hiddenInput.setAttribute('type', 'hidden');
       hiddenInput.setAttribute('name', 'stripeToken');

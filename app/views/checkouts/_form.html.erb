@@ -1,7 +1,7 @@
-<%= bootstrap_form_with(model: checkout, local: true) do |form| %>
+<%= bootstrap_form_with(model: checkout, local: true, class: "payment-form") do |form| %>
   
   <div class="form-group">
-    <%= form.text_field :email, class: "form-control", label: "Email (optional*)" %>
+    <%= form.text_field :email, class: "form-control", label: "Email" %>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -32,7 +32,7 @@
 
 
   <div class="form-group">
-    <%= form.number_field :phone, class: "form-control", label: "Phone (optional)" %>
+    <%= form.number_field :phone, class: "form-control", label: "Phone *" %>
   </div>
 
 <%# 
