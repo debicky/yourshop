@@ -25,11 +25,25 @@ class CheckoutsController < ApplicationController
   def edit
   end
 
+
+
   # POST /checkouts
   # POST /checkouts.json
   def create
+    @amount = ((current_order.subtotal + 8)*100).to_i
+    @description = "Order: #{current_order.id}"
+
     @checkout = Checkout.new(checkout_params)
-    @checkout.add_order_items_from_cart(current_order)
+    @checkout.add_order_items_from_cart(current_order)   
+
+
+    charge = Stripe::Charge.create({
+      amount: @amount,
+      currency: "usd",
+      description: @description,
+      source: 'tok_visa'
+    })
+
     respond_to do |format|
       if @checkout.save
         Order.destroy(session[:order_id])
@@ -42,6 +56,10 @@ class CheckoutsController < ApplicationController
         format.json { render json: @checkout.errors, status: :unprocessable_entity }
       end
     end
+
+    rescue Stripe::CardError => e
+      flash.alert = e.message
+      render action: :new
   end
 
   # PATCH/PUT /checkouts/1
@@ -81,7 +99,7 @@ class CheckoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkout_params
-      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :pay_type, :email)
+      params.require(:checkout).permit(:first_name, :last_name, :address, :city, :country, :postal_code, :phone, :pay_type, :email, :stripeToken)
     end
 
     def ensure_cart_isnt_empty

@@ -10,6 +10,8 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'figaro'
 gem "aws-sdk-s3", require: false
+gem 'stripe'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

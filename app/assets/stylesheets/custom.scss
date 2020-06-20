@@ -6,6 +6,11 @@
   outline: 0 !important;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
   min-height: 100vh;
   position: relative;
@@ -26,4 +31,6 @@ footer {
   
 }
 
-
+.checkout {
+  max-height: 20vh;
+}

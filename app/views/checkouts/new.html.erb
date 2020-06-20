@@ -1,5 +1,4 @@
-
-<div class="row  d-flex">
+<div class="row  d-flex checkout">
   <div class="col-md-6  order-md-2 border-bottom mt-4">
     <% @order_items.each do |item| %>
         <div class="card mb-1">
@@ -39,6 +38,7 @@
     <h2 class="font-weight-bold mt-5">YourShop.</h2>
     <h3 class="text-center">Enter your details.</h3>
     <%= render 'form', checkout: @checkout %>
+    
     <%= link_to "Back to cart", your_cart_path, class: "btn btn-outline-secondary btn-sm my-3 ml-2" %>
     <div class="btn btn-outline-primary btn-sm ml-auto mr-2" data-toggle="modal" data-target="#exampleModal">
       Return policy
