@@ -1,20 +1,18 @@
 # Sample-shop-application
 
-## Very basic shopping app.
+## Basic shopping app.
 
-Shopping cart is based on user session. Could be used for small e-commerce.
+Shopping cart is based on user session. 
+They can add maximum 5 items at once and choose size of them.
+There is subtotal and total price of the order. 
+**Order item operations are done without page refreshing thanks to AJAX.**
+Cart view is rendered after placing first item to it.
+**After placing an order, email with quantity and total cost of products is send to user.**
+**Checkout form integrated with stripe.**
 
-
-### There are mainly 2 types of users:
-
-1. Unregistered guest/registered user -  users can order products They can add maximum 5 items at once. Choose size of them.
-  At shopping cart there is subtotal and total price of the order. 
-  They still can update amount and size of the product. 
-  **Order item operations are done without page refreshing thanks to AJAX.**
-  Cart view is rendered after placing first item to it.
-  **After placing an order email with quantity and total cost of products is send to user.**
+### This is single user app.
   
-2. Administrator - can CRUD products.
+1. Administrator - can CRUD products.
   - *New product*, - name, description, image, price and category of product.
   - *New sizes*, ability to add new sizes for products. 
   - *New categories*, ability to add new cetegories for products. 
@@ -57,6 +55,9 @@ Shopping cart is based on user session. Could be used for small e-commerce.
    
 9. gem "aws-sdk-s3"
    > needed to upload files to Amazon S3 bucket in production.
+   
+9. gem 'stripe'
+   > charge customers for your products.
    
 
 
