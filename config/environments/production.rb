@@ -1,18 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
-  host = 'localhost:3000'
   config.action_mailer.default_url_options = { :host => "your-shop-debart.herokuapp.com" }
-
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port    => 587,
-    :domain  => 'smtp.gmail.com',
+    :domain  => 'your-shop-debart.herokuapp.com',
     :user_name  => 'debartportfolio@gmail.com',
     :password  => ENV['GMAIL_PASSWORD'],
-    :authentication  => :login,
+    :authentication  => :plain,
     :enable_starttls_auto => true
   }
+
 
 
   config.serve_static_assets = true
